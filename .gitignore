@@ -216,3 +216,15 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# CatBoost training logs (auto-regenerated on every training run, shouldn't be versioned)
+catboost_info/
+notebook/catboost_info/
+
+# Python cache
+__pycache__/
+*.pyc
+
+# Virtual environment
+venv/
+.venv/

@@ -11,7 +11,7 @@ class PredictPipeline:
     def __init__(self):
         pass
 
-    def predict(self,features):
+    def predict(self, features):
         try:
             model_path = ARTIFACTS_DIR / 'model.pkl'
             preprocessor_path = ARTIFACTS_DIR / 'preprocessor.pkl'
@@ -25,7 +25,22 @@ class PredictPipeline:
             raise CustomException(e,sys)
 
 class CustomData:
-    def __init__(  self,
+    """Wrapper for student data to be fed into prediction pipeline.
+    
+    Attributes:
+        gender: Student's gender
+        race_ethnicity: Student's race/ethnicity category
+        parental_level_of_education: Highest education level of parent(s)
+        lunch: Lunch type (standard or free/reduced)
+        test_preparation_course: Whether student completed test prep
+        reading_score: Reading assessment score (0-100)
+        writing_score: Writing assessment score (0-100)
+    
+    Note: gender and race_ethnicity are included here for maximum accuracy,
+    but see the fairness discussion in PredictPipeline docstring.
+    """
+    
+    def __init__(self,
         gender: str,
         race_ethnicity: str,
         parental_level_of_education,
